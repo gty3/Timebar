@@ -38,7 +38,7 @@ export default function MyStack({ stack }: StackContext) {
       "POST /getUserMonth": "src/getUserMonth.handler",
       "POST /getPublicUserMonth": {
         function: "src/getPublicUserMonth.handler",
-        // authorizer: "none",
+        authorizer: "none",
         environment: { STAGE: stack.stage }
       },
       "POST /saveText": "src/saveText.handler",
@@ -62,7 +62,7 @@ export default function MyStack({ stack }: StackContext) {
       actions: ["execute-api:Invoke"],
       effect: iam.Effect.ALLOW,
       resources: [
-        `arn:aws:execute-api:${stack.region}:${stack.account}:${api.httpApiId}/getUserMonth`
+        `arn:aws:execute-api:${stack.region}:${stack.account}:${api.httpApiId}/getPublicUserMonth`
       ]
     })
   ])
